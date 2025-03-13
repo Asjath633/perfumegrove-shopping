@@ -38,7 +38,7 @@ const Navbar = () => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="text-xl font-light tracking-widest transition-opacity hover:opacity-80">
-            ATTAROME
+            ZANDRO
           </Link>
 
           {/* Desktop Navigation */}

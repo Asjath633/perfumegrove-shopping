@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="md:col-span-1">
             <Link to="/" className="text-xl font-light tracking-widest">
-              ATTAROME
+              ZANDRO
             </Link>
             <p className="mt-4 text-white/70 text-sm leading-relaxed">
               Handcrafted natural attars capturing the essence of traditional perfumery with modern elegance.
@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail size={16} className="mr-2 text-gold" />
-                <span className="text-white/70 text-sm">info@attarome.com</span>
+                <span className="text-white/70 text-sm">info@zandro.com</span>
               </li>
             </ul>
           </div>
@@ -109,7 +109,7 @@ const Footer = () => {
         {/* Bottom Copyright */}
         <div className="border-t border-white/10 mt-10 pt-6 text-center">
           <p className="text-white/50 text-xs">
-            © {currentYear} Attarome. All rights reserved.
+            © {currentYear} Zandro. All rights reserved.
           </p>
         </div>
       </div>
