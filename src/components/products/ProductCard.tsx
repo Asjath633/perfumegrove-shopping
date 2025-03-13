@@ -52,7 +52,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <div className="mt-4 space-y-1">
         <h3 className="font-medium transition-colors group-hover:text-gold">{product.name}</h3>
         <p className="text-warmgray text-sm">{product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
-        <p className="font-medium">${product.price}</p>
+        <p className="font-medium">₹{product.price} <span className="text-xs text-warmgray">({product.size})</span></p>
+        {product.sizes && product.sizes.length > 1 && (
+          <p className="text-sm text-warmgray">₹{product.sizes[0].price} <span className="text-xs">({product.sizes[0].size})</span></p>
+        )}
       </div>
     </Link>
   );

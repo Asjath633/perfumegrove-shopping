@@ -17,6 +17,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const [selectedSize, setSelectedSize] = useState<string>("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,6 +27,7 @@ const ProductDetail = () => {
       if (foundProduct) {
         setProduct(foundProduct);
         setQuantity(1);
+        setSelectedSize(foundProduct.size);
         // Find related products from the same category
         const related = getProductsByCategory(foundProduct.category)
           .filter(p => p.id !== id)
@@ -38,17 +40,50 @@ const ProductDetail = () => {
   }, [id, navigate]);
 
   const handleQuantityChange = (newQuantity: number) => {
-    if (product && newQuantity >= 1 && newQuantity <= product.stock) {
-      setQuantity(newQuantity);
+    if (product) {
+      const currentSizeObj = product.sizes?.find(s => s.size === selectedSize) || 
+                           { size: product.size, stock: product.stock };
+      if (newQuantity >= 1 && newQuantity <= currentSizeObj.stock) {
+        setQuantity(newQuantity);
+      }
     }
+  };
+
+  const handleSizeChange = (size: string) => {
+    setSelectedSize(size);
+    setQuantity(1);
   };
 
   const handleAddToCart = () => {
     if (product) {
+      const productWithSelectedSize = {
+        ...product,
+        size: selectedSize,
+        price: product.sizes?.find(s => s.size === selectedSize)?.price || product.price
+      };
+      
       for (let i = 0; i < quantity; i++) {
-        addToCart(product);
+        addToCart(productWithSelectedSize);
       }
     }
+  };
+
+  const getCurrentStock = () => {
+    if (!product) return 0;
+    if (product.sizes) {
+      const sizeObj = product.sizes.find(s => s.size === selectedSize);
+      return sizeObj ? sizeObj.stock : product.stock;
+    }
+    return product.stock;
+  };
+
+  const getCurrentPrice = () => {
+    if (!product) return 0;
+    if (product.sizes) {
+      const sizeObj = product.sizes.find(s => s.size === selectedSize);
+      return sizeObj ? sizeObj.price : product.price;
+    }
+    return product.price;
   };
 
   if (!product) {
@@ -90,7 +125,7 @@ const ProductDetail = () => {
               <div>
                 <p className="subtle-text mb-2">{product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
                 <h1 className="h2 mb-2">{product.name}</h1>
-                <p className="text-xl font-medium mb-6">${product.price}</p>
+                <p className="text-xl font-medium mb-6">₹{getCurrentPrice()}</p>
                 
                 <div className="mb-6">
                   <p className="text-warmgray leading-relaxed">{product.description}</p>
@@ -111,8 +146,26 @@ const ProductDetail = () => {
                 {/* Size */}
                 <div className="mb-6">
                   <h3 className="font-medium mb-3">Size</h3>
-                  <div className="inline-block bg-secondary px-4 py-2 rounded-md text-sm">
-                    {product.size}
+                  <div className="flex flex-wrap gap-2">
+                    {product.sizes ? (
+                      product.sizes.map(sizeOption => (
+                        <button
+                          key={sizeOption.size}
+                          onClick={() => handleSizeChange(sizeOption.size)}
+                          className={`px-4 py-2 rounded-md text-sm transition-colors ${
+                            selectedSize === sizeOption.size 
+                              ? 'bg-richblack text-white' 
+                              : 'bg-secondary hover:bg-gold/10'
+                          }`}
+                        >
+                          {sizeOption.size} - ₹{sizeOption.price}
+                        </button>
+                      ))
+                    ) : (
+                      <div className="inline-block bg-secondary px-4 py-2 rounded-md text-sm">
+                        {product.size} - ₹{product.price}
+                      </div>
+                    )}
                   </div>
                 </div>
                 
@@ -131,7 +184,7 @@ const ProductDetail = () => {
                     <span className="mx-6">{quantity}</span>
                     <button 
                       onClick={() => handleQuantityChange(quantity + 1)}
-                      disabled={quantity >= product.stock}
+                      disabled={quantity >= getCurrentStock()}
                       className="p-2 border rounded-md hover:bg-gray-100 transition-colors disabled:opacity-50"
                       aria-label="Increase quantity"
                     >
@@ -139,7 +192,7 @@ const ProductDetail = () => {
                     </button>
                     
                     <span className="ml-4 text-sm text-warmgray">
-                      {product.stock} available
+                      {getCurrentStock()} available
                     </span>
                   </div>
                 </div>
@@ -148,7 +201,7 @@ const ProductDetail = () => {
                 <button 
                   onClick={handleAddToCart}
                   className="button-primary flex items-center justify-center w-full"
-                  disabled={product.stock === 0}
+                  disabled={getCurrentStock() === 0}
                 >
                   <ShoppingBag size={16} className="mr-2" />
                   Add to Cart
