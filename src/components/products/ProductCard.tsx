@@ -27,14 +27,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="product-image-wrapper">
+      <div className="product-image-wrapper relative aspect-[3/4] bg-cream/40 rounded-lg overflow-hidden">
         <div 
           className={`absolute inset-0 bg-secondary animate-pulse ${imageLoaded ? 'hidden' : 'block'}`}
         ></div>
         <img 
           src={product.image} 
           alt={product.name}
-          className={`product-image ${isHovered ? 'scale-105' : 'scale-100'} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-transform duration-500 ease-out ${isHovered ? 'scale-105' : 'scale-100'} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
         />
         <button
