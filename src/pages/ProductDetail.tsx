@@ -34,7 +34,7 @@ const ProductDetail = () => {
           .slice(0, 4);
         setRelatedProducts(related);
       } else {
-        navigate("/collection");
+        navigate("/perfumes");
       }
     }
   }, [id, navigate]);

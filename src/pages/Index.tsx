@@ -1,7 +1,6 @@
 
 import React, { useEffect } from "react";
 import Hero from "@/components/home/Hero";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -16,7 +15,6 @@ const Index = () => {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <FeaturedProducts />
         
         {/* Story Section */}
         <section className="py-20 bg-secondary overflow-hidden">

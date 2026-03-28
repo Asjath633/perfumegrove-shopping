@@ -10,6 +10,7 @@ export interface Product {
   notes: string[];
   size: string;
   stock: number;
+  department?: "perfume" | "accessory";
   sizes?: {
     size: string;
     price: number;
@@ -145,6 +146,58 @@ export const products: Product[] = [
       { size: "3ml", price: 100, stock: 19 },
       { size: "6ml", price: 200, stock: 11 }
     ]
+  },
+  {
+    id: "acc-1",
+    name: "Ultra-Clear Temper for Android",
+    description: "Anti-scratch and full coverage tempered glass for top Android models.",
+    price: 15,
+    image: "https://images.unsplash.com/photo-1601043346985-0556f8fba3d5?q=80&w=800&auto=format&fit=crop",
+    category: "temper for Android",
+    department: "accessory",
+    featured: true,
+    notes: ["Anti-scratch", "9H Hardness", "Oleo-phobic"],
+    size: "Universal",
+    stock: 200
+  },
+  {
+    id: "acc-2",
+    name: "Privacy Temper for IOS",
+    description: "Protect your screen and your privacy with our premium iOS tempered glass.",
+    price: 18,
+    image: "https://images.unsplash.com/photo-1627993049071-8bc6b2c2c9d4?q=80&w=800&auto=format&fit=crop",
+    category: "Temper for IOS",
+    department: "accessory",
+    featured: true,
+    notes: ["Privacy Filter", "9H Hardness"],
+    size: "Universal",
+    stock: 150
+  },
+  {
+    id: "acc-3",
+    name: "Luxury Leather iPhone case",
+    description: "Elegant, durable, and shock-resistant premium leather case.",
+    price: 35,
+    image: "https://images.unsplash.com/photo-1603313011101-320f26a4f6f6?q=80&w=800&auto=format&fit=crop",
+    category: "iPhone case",
+    department: "accessory",
+    featured: true,
+    notes: ["Genuine Leather", "Shockproof"],
+    size: "Standard",
+    stock: 50
+  },
+  {
+    id: "acc-4",
+    name: "Rugged Armor Android case",
+    description: "Heavy-duty protection for your Android device.",
+    price: 25,
+    image: "https://images.unsplash.com/photo-1541480601022-2308c0f02487?q=80&w=800&auto=format&fit=crop",
+    category: "Android phone case",
+    department: "accessory",
+    featured: false,
+    notes: ["Drop Protection", "Kickstand"],
+    size: "Standard",
+    stock: 100
   }
 ];
 
@@ -163,4 +216,8 @@ export const getProductsByCategory = (category: string): Product[] => {
 export const getAllCategories = (): string[] => {
   const categories = new Set(products.map(product => product.category));
   return Array.from(categories);
+};
+
+export const getProductsByDepartment = (department: "perfume" | "accessory"): Product[] => {
+  return products.filter(product => (product.department || "perfume") === department);
 };

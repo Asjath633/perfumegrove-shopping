@@ -25,28 +25,23 @@ const Footer = () => {
             <h3 className="text-sm tracking-wider uppercase mb-4 text-gold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/collection" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Shop
+                <Link to="/" className="text-white/70 text-sm hover:text-gold transition-colors">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  About Us
+                <Link to="/perfumes" className="text-white/70 text-sm hover:text-gold transition-colors">
+                  Perfumes
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Contact
+                <Link to="/accessories" className="text-white/70 text-sm hover:text-gold transition-colors">
+                  Accessories
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Privacy Policy
+                <Link to="/request" className="text-white/70 text-sm hover:text-gold transition-colors">
+                  Request a Product
                 </Link>
               </li>
             </ul>
@@ -58,15 +53,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={16} className="mr-2 mt-0.5 text-gold" />
-                <span className="text-white/70 text-sm">123 Fragrance Avenue, NY 10001, USA</span>
+                <span className="text-white/70 text-sm">Kangeyam Road, Tiruppur, Tamil Nadu</span>
               </li>
               <li className="flex items-center">
                 <Phone size={16} className="mr-2 text-gold" />
-                <span className="text-white/70 text-sm">+1 (800) 123-4567</span>
+                <span className="text-white/70 text-sm">+91 98420 83220</span>
               </li>
               <li className="flex items-center">
                 <Mail size={16} className="mr-2 text-gold" />
-                <span className="text-white/70 text-sm">info@zandro.com</span>
+                <span className="text-white/70 text-sm">007.ZANDRO@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -75,32 +70,23 @@ const Footer = () => {
           <div>
             <h3 className="text-sm tracking-wider uppercase mb-4 text-gold">Follow Us</h3>
             <div className="flex space-x-4 mb-6">
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/zandro_007/"
+                target="_blank"
                 rel="noreferrer"
                 className="bg-white/10 p-2 rounded-full hover:bg-gold/20 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
               </a>
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
+              <a
+                href="https://www.facebook.com/profile.php?id=61575429866308"
+                target="_blank"
                 rel="noreferrer"
                 className="bg-white/10 p-2 rounded-full hover:bg-gold/20 transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={16} />
-              </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noreferrer"
-                className="bg-white/10 p-2 rounded-full hover:bg-gold/20 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={16} />
               </a>
             </div>
           </div>

@@ -89,7 +89,7 @@ const Cart = () => {
                             <ShoppingBag size={48} className="text-gray-300 mb-4" />
                             <h2 className="text-xl mb-2">Your cart is empty</h2>
                             <p className="text-warmgray mb-6">Looks like you haven't added any items to your cart yet.</p>
-                            <Link to="/collection" className="button-primary">
+                            <Link to="/perfumes" className="button-primary">
                                 Browse Collection
                             </Link>
                         </div>
@@ -155,7 +155,7 @@ const Cart = () => {
                                 </div>
 
                                 <div className="mt-6">
-                                    <Link to="/collection" className="text-gold hover:underline flex items-center">
+                                    <Link to="/perfumes" className="text-gold hover:underline flex items-center">
                                         <span className="mr-1">← Continue Shopping</span>
                                     </Link>
                                 </div>

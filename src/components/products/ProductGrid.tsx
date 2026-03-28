@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from "react";
-import { Product, getAllCategories } from "@/lib/products";
+import { Product } from "@/lib/products";
+import { Link } from "react-router-dom";
+import { PackageSearch } from "lucide-react";
 import ProductCard from "./ProductCard";
 
 interface ProductGridProps {
@@ -11,7 +13,10 @@ const ProductGrid = ({ products }: ProductGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [isLoading, setIsLoading] = useState(false);
-  const categories = ["all", ...getAllCategories()];
+  
+  // Dynamically get categories from the products actually displayed
+  const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
+  const categories = ["all", ...uniqueCategories];
 
   useEffect(() => {
     setIsLoading(true);
@@ -83,6 +88,25 @@ const ProductGrid = ({ products }: ProductGridProps) => {
             )}
           </>
         )}
+      </div>
+
+      {/* Request Product Banner */}
+      <div className="mt-20 bg-cream/50 rounded-2xl p-8 md:p-12 text-center border border-gold/20 relative overflow-hidden">
+        <div className="relative z-10">
+          <PackageSearch size={48} className="mx-auto text-gold mb-4" />
+          <h3 className="h3 mb-3 text-richblack">Didn't find what you're looking for?</h3>
+          <p className="text-warmgray max-w-xl mx-auto mb-8 text-lg">
+            {products.length > 0 && products[0].department === "accessory" 
+              ? "We source the finest premium phone accessories. If you have a specific item in mind, let us know and we'll get it for you!"
+              : "We source the finest perfumes. If you have a specific scent in mind, let us know and we'll get it for you!"}
+          </p>
+          <Link 
+            to="/request" 
+            className="inline-flex items-center bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-gold/90 transition-all shadow-sm"
+          >
+            <span>Request a Custom Product</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

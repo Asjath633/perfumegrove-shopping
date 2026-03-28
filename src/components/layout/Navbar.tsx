@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, Menu, X, PackageSearch } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 
@@ -44,13 +44,21 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="nav-link">Home</Link>
-            <Link to="/collection" className="nav-link">Collection</Link>
-            <Link to="/about" className="nav-link">About</Link>
-            <Link to="/contact" className="nav-link">Contact</Link>
+            <Link to="/perfumes" className="nav-link">Perfumes</Link>
+            <Link to="/accessories" className="nav-link">Accessories</Link>
           </div>
 
           {/* Cart & Mobile Menu Toggle */}
-          <div className="flex items-center">
+          <div className="flex items-center space-x-1">
+            {/* Request Icon Button */}
+            <Link 
+              to="/request"
+              className="relative p-2 hover:text-gold transition-colors"
+              aria-label="Request a product"
+            >
+              <PackageSearch size={20} />
+            </Link>
+
             {/* Cart Button */}
             <button 
               onClick={openCart}
@@ -86,9 +94,8 @@ const Navbar = () => {
       >
         <div className="flex flex-col space-y-6 text-center">
           <Link to="/" className="text-xl py-2 border-b border-gold/20">Home</Link>
-          <Link to="/collection" className="text-xl py-2 border-b border-gold/20">Collection</Link>
-          <Link to="/about" className="text-xl py-2 border-b border-gold/20">About</Link>
-          <Link to="/contact" className="text-xl py-2 border-b border-gold/20">Contact</Link>
+          <Link to="/perfumes" className="text-xl py-2 border-b border-gold/20">Perfumes</Link>
+          <Link to="/accessories" className="text-xl py-2 border-b border-gold/20">Accessories</Link>
         </div>
       </div>
     </header>
