@@ -53,7 +53,7 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				cream: '#F8F5F0',
+				cream: '#e6dfd2ff',
 				richblack: '#1D1D1F',
 				gold: '#BFA181',
 				warmgray: '#8A8682',

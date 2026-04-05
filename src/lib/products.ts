@@ -1,204 +1,266 @@
-
 export interface Product {
   id: string;
   name: string;
   description: string;
   price: number;
+  originalPrice?: number;
   image: string;
   category: string;
   featured: boolean;
   notes: string[];
   size: string;
   stock: number;
+  warranty?: string;
   department?: "perfume" | "accessory";
   sizes?: {
     size: string;
     price: number;
+    originalPrice?: number;
     stock: number;
+    image?: string;
   }[];
 }
 
 export const products: Product[] = [
   {
     id: "attar-1",
-    name: "Musk Al Madina",
+    name: "Amber",
     description: "A rich and deep fragrance with captivating notes of pure musk, ambergris, and sandalwood.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=800&auto=format&fit=crop",
-    category: "classic",
+    image: "/products/Attar/Amber.png",
+    category: "Medium",
     featured: true,
-    notes: ["Musk", "Ambergris", "Sandalwood"],
+    notes: ["Oud, Musk, Dark Vanilla"],
     size: "6ml",
     stock: 15,
     sizes: [
-      { size: "3ml", price: 100, stock: 20 },
-      { size: "6ml", price: 200, stock: 15 }
+      { size: "3ml", price: 100, stock: 20, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 15, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-2",
-    name: "Rose of Taif",
+    name: "Ameerul oud",
     description: "Delicate and floral, this attar captures the essence of premium Taif roses with subtle hints of jasmine.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1592155539161-c93f2f67754c?q=80&w=800&auto=format&fit=crop",
-    category: "floral",
+    image: "/products/Attar/Ameerul oud.png",
+    category: "Premium",
     featured: true,
-    notes: ["Taif Rose", "Jasmine", "Soft Vanilla"],
+    notes: ["Simple, cozy, warm, floral"],
     size: "6ml",
     stock: 10,
     sizes: [
-      { size: "3ml", price: 100, stock: 18 },
-      { size: "6ml", price: 200, stock: 10 }
+      { size: "3ml", price: 100, stock: 18, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 10, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-3",
-    name: "Oud Royale",
+    name: "Jannatul Firdaus",
     description: "A majestic blend of premium agarwood, saffron, and amber creating a luxurious and long-lasting fragrance.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1586452027707-b2de7d420f43?q=80&w=800&auto=format&fit=crop",
-    category: "premium",
+    image: "/products/Attar/Jannatul Firdous.png",
+    category: "Premium",
     featured: true,
-    notes: ["Agarwood", "Saffron", "Amber"],
+    notes: ["Creamy, woody backbone,Clean, soapy,Marine sweetness + fixative power of amber"],
     size: "6ml",
     stock: 8,
     sizes: [
-      { size: "3ml", price: 100, stock: 15 },
-      { size: "6ml", price: 200, stock: 8 }
+      { size: "3ml", price: 100, stock: 15, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 8, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-4",
-    name: "Amber Mystique",
+    name: "juwan Musk",
     description: "Warm and mysterious amber infused with exotic spices and a touch of vanilla for a comforting experience.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1547887538-cc10eca1a747?q=80&w=800&auto=format&fit=crop",
-    category: "oriental",
+    image: "/products/Attar/Juwan Musk.png",
+    category: "Medium",
     featured: false,
-    notes: ["Amber", "Cardamom", "Vanilla"],
+    notes: ["clean, skin-scent,Earthy,Warm, slightly sweet, musky"],
     size: "6ml",
     stock: 12,
     sizes: [
-      { size: "3ml", price: 100, stock: 22 },
-      { size: "6ml", price: 200, stock: 12 }
+      { size: "3ml", price: 100, stock: 22, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 12, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-5",
-    name: "Jasmine Dreams",
+    name: "Midnight oud",
     description: "Pure jasmine flowers collected at dusk and distilled to capture their intoxicating and dreamy essence.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1546797140-c375893770ab?q=80&w=800&auto=format&fit=crop",
-    category: "floral",
+    image: "/products/Attar/Midnight oud.png",
+    category: "Mild",
     featured: true,
-    notes: ["Jasmine", "White Flowers", "Musk"],
+    notes: ["Classic Middle Eastern floral,Smoky-sweet, creamy drydown,warm"],
+
     size: "6ml",
     stock: 17,
     sizes: [
-      { size: "3ml", price: 100, stock: 25 },
-      { size: "6ml", price: 200, stock: 17 }
+      { size: "3ml", price: 100, stock: 25, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 17, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-6",
-    name: "Vetiver Earth",
+    name: "Mukallat Dubai",
     description: "A grounding blend of vetiver root, patchouli, and cedarwood for a natural and earthy fragrance.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1592968682222-add6bdc733c4?q=80&w=800&auto=format&fit=crop",
-    category: "woody",
+    image: "/products/Attar/Mukallat Dubai.png",
+    category: "Medium",
     featured: false,
-    notes: ["Vetiver", "Patchouli", "Cedarwood"],
+    notes: ["Warm", "Resinous", "Golden Sweetness", "Creamy", "Smooth", "Woody", "Earthy"],
     size: "6ml",
     stock: 9,
     sizes: [
-      { size: "3ml", price: 100, stock: 16 },
-      { size: "6ml", price: 200, stock: 9 }
+      { size: "3ml", price: 100, stock: 16, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 9, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-7",
-    name: "Saffron Bloom",
+    name: "Musk rijali",
     description: "Luxurious saffron blended with Damascus rose and subtle oud for an opulent and refined scent.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1594033579777-5c3cc8189e0d?q=80&w=800&auto=format&fit=crop",
-    category: "premium",
+    image: "/products/Attar/Musk rijali.png",
+    category: "Premium",
     featured: false,
-    notes: ["Saffron", "Damascus Rose", "Oud"],
+    notes: ["Creamy", "woody", "resinous sweetness", "Floral", "rosy", "slightly fruity", "warm", "musky"],
     size: "6ml",
     stock: 7,
     sizes: [
-      { size: "3ml", price: 100, stock: 14 },
-      { size: "6ml", price: 200, stock: 7 }
+      { size: "3ml", price: 100, stock: 14, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 7, image: "/products/Attar/6ml bottle.png" }
     ]
   },
   {
     id: "attar-8",
-    name: "Musk Noir",
+    name: "Musk",
     description: "A dark and sophisticated musk with leather accords and smoky vanilla for a modern interpretation.",
     price: 200,
-    image: "https://images.unsplash.com/photo-1543422655-ac1c6ca993f1?q=80&w=800&auto=format&fit=crop",
-    category: "classic",
+    image: "/products/Attar/Musk.png",
+    category: "Mild",
     featured: false,
-    notes: ["Black Musk", "Leather", "Smoky Vanilla"],
+    notes: ["Smoky vanilla"],
     size: "6ml",
     stock: 11,
     sizes: [
-      { size: "3ml", price: 100, stock: 19 },
-      { size: "6ml", price: 200, stock: 11 }
+      { size: "3ml", price: 100, stock: 19, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 11, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "acc-1",
+    name: "boAt Airdopes 313",
+    description: "Immersive sound and ergonomic design with long-lasting battery life. Includes all 3 signature colors.",
+    price: 700,
+    image: "/products/313.jpeg",
+    category: "Airpods",
+    department: "accessory",
+    featured: true,
+    notes: ["Glide Shell", "13mm Drivers", "Total Playtime: 75 Hours"],
+    size: "All Colors",
+    stock: 80,
+    sizes: [
+      { size: "Forest Green", price: 700, stock: 30 },
+      { size: "Midnight Black", price: 700, stock: 30 },
+      { size: "Desert Beige", price: 700, stock: 20 }
     ]
   },
   {
-    id: "acc-1",
-    name: "Ultra-Clear Temper for Android",
-    description: "Anti-scratch and full coverage tempered glass for top Android models.",
-    price: 15,
-    image: "https://images.unsplash.com/photo-1601043346985-0556f8fba3d5?q=80&w=800&auto=format&fit=crop",
-    category: "temper for Android",
-    department: "accessory",
-    featured: true,
-    notes: ["Anti-scratch", "9H Hardness", "Oleo-phobic"],
-    size: "Universal",
-    stock: 200
-  },
-  {
     id: "acc-2",
-    name: "Privacy Temper for IOS",
-    description: "Protect your screen and your privacy with our premium iOS tempered glass.",
-    price: 18,
-    image: "https://images.unsplash.com/photo-1627993049071-8bc6b2c2c9d4?q=80&w=800&auto=format&fit=crop",
-    category: "Temper for IOS",
+    name: "boAt Power Bank 10000mAh",
+    description: "Compact and powerful 4-in-1 charging solution with built-in cables for both iPhone and Android.",
+    price: 1500,
+    image: "/products/powerbank.jpeg",
+    category: "Android Accessories",
     department: "accessory",
     featured: true,
-    notes: ["Privacy Filter", "9H Hardness"],
-    size: "Universal",
-    stock: 150
+    notes: ["4-in-1 Cables", "10000mAh", "Fast Charging"],
+    size: "Vibrant Red",
+    stock: 120,
+    sizes: [
+      { size: "Vibrant Red", price: 1500, stock: 60 },
+      { size: "Midnight Black", price: 1500, stock: 60 }
+    ]
   },
   {
     id: "acc-3",
-    name: "Luxury Leather iPhone case",
-    description: "Elegant, durable, and shock-resistant premium leather case.",
-    price: 35,
-    image: "https://images.unsplash.com/photo-1603313011101-320f26a4f6f6?q=80&w=800&auto=format&fit=crop",
-    category: "iPhone case",
+    name: "boAt Tarjan Pro Neckband",
+    description: "Dual battery neckband for extended listening with crystal clear sound and Dolby Audio support.",
+    price: 900,
+    image: "/products/tarjan-pro.png",
+    category: "Airpods",
     department: "accessory",
-    featured: true,
-    notes: ["Genuine Leather", "Shockproof"],
-    size: "Standard",
-    stock: 50
+    featured: false,
+    notes: ["Dual Battery", "Dolby Audio", "Playtime: 500hrs"],
+    size: "Navy Blue",
+    stock: 60
   },
   {
     id: "acc-4",
-    name: "Rugged Armor Android case",
-    description: "Heavy-duty protection for your Android device.",
-    price: 25,
-    image: "https://images.unsplash.com/photo-1541480601022-2308c0f02487?q=80&w=800&auto=format&fit=crop",
-    category: "Android phone case",
+    name: "boAt Airdopes Prime 131-GEN",
+    description: "Premium earbuds with Hybrid Active Noise Cancellation and a sophisticated metallic finish.",
+    price: 700,
+    image: "/products/131 GEN.jpeg",
+    category: "Airpods",
+    department: "accessory",
+    featured: true,
+    notes: ["Hybrid ANC", "Prime Build", "Touch Controls"],
+    size: "Rose Gold",
+    stock: 45,
+    sizes: [
+      { size: "Rose Gold", price: 700, stock: 15 },
+      { size: "Midnight Black", price: 700, stock: 20 },
+      { size: "Deep Blue", price: 700, stock: 10 }
+    ]
+  },
+  {
+    id: "acc-5",
+    name: "JTP 15W Fast Charger",
+    description: "Reliable and fast charging for all your mobile devices. Includes a high-grade Micro-USB cable.",
+    price: 200,
+    image: "/products/charger-15w.png",
+    category: "Android Accessories",
     department: "accessory",
     featured: false,
-    notes: ["Drop Protection", "Kickstand"],
-    size: "Standard",
-    stock: 100
+    notes: ["15W Output", "Micro-USB Included", "Universal Compatibility"],
+    size: "Pure White",
+    stock: 150
+  },
+  
+  {
+    id: "acc-6",
+    name: "MZ Portable Soundbar with Mic",
+    description: "Compact and powerful portable soundbar with a dedicated karaoke microphone for double the fun.",
+    price: 900,
+    image: "/products/M2z Speaker image.png",
+    category: "Speakers",
+    department: "accessory",
+    featured: true,
+    notes: ["Compact Soundbar", "Single Karaoke Mic", "TF Card Support"],
+    size: "One Size",
+    stock: 40
+  },    
+  {
+    id: "acc-7",
+    name: "Mobile battery",
+    description: "High-capacity portable battery for keeping your devices powered on the go.",
+    price: 250,
+    image: "/products/Battery/WhatsApp Image 2026-04-04 at 12.55.51 PM (1).jpeg",
+    category: "Android Accessories",
+    department: "accessory",
+    featured: true,
+    notes: ["High Capacity", "Fast Charging", "Universal Compatibility"], 
+    size: "",
+    warranty: "One Year",
+    stock: 40
   }
+
+  
 ];
 
 export const getProductById = (id: string): Product | undefined => {
@@ -220,4 +282,19 @@ export const getAllCategories = (): string[] => {
 
 export const getProductsByDepartment = (department: "perfume" | "accessory"): Product[] => {
   return products.filter(product => (product.department || "perfume") === department);
+};
+
+export const getSizeImage = (product: Product, size: string): string => {
+  // If no size selected, return default product image
+  if (!size) {
+    return product.image;
+  }
+  
+  if (product.sizes) {
+    const sizeObj = product.sizes.find(s => s.size === size);
+    if (sizeObj && sizeObj.image) {
+      return sizeObj.image;
+    }
+  }
+  return product.image;
 };

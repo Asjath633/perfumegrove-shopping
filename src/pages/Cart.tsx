@@ -24,6 +24,7 @@ const Cart = () => {
 
     const [showCheckout, setShowCheckout] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [isFirstOrder, setIsFirstOrder] = useState(true);
     const [formData, setFormData] = useState({
         customerName: "",
         phone: "",
@@ -34,6 +35,9 @@ const Cart = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        // Check if this is the first order
+        const hasOrdered = localStorage.getItem("hasOrdered");
+        setIsFirstOrder(!hasOrdered);
     }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -62,6 +66,8 @@ const Cart = () => {
             const result = await response.json();
 
             if (result.result === "success") {
+                // Mark that order has been placed
+                localStorage.setItem("hasOrdered", "true");
                 toast.success("Order placed successfully! We'll contact you soon.");
                 clearCart();
                 setFormData({ customerName: "", phone: "", email: "", address: "", paymentType: "COD" });
@@ -119,7 +125,7 @@ const Cart = () => {
                                                             <h3 className="font-medium">{item.product.name}</h3>
                                                             <p className="text-sm text-warmgray">{item.product.size}</p>
                                                         </div>
-                                                        <p className="font-medium">${item.product.price}</p>
+                                                        <p className="font-medium">₹{item.product.price}</p>
                                                     </div>
 
                                                     <div className="flex items-center justify-between mt-4">
@@ -169,18 +175,24 @@ const Cart = () => {
                                     <div className="space-y-4 mb-6">
                                         <div className="flex justify-between">
                                             <span className="text-warmgray">Subtotal</span>
-                                            <span>${totalPrice.toFixed(2)}</span>
+                                            <span>₹{totalPrice.toFixed(2)}</span>
                                         </div>
+                                        
                                         <div className="flex justify-between">
                                             <span className="text-warmgray">Shipping</span>
-                                            <span>Free</span>
+                                            <div className="text-right">
+                                                <span>Free</span>
+                                                {isFirstOrder && (
+                                                    <p className="text-xs text-gold font-medium">First Order!</p>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div className="border-t pt-4 mb-6">
                                         <div className="flex justify-between font-medium text-lg">
                                             <span>Total</span>
-                                            <span>${totalPrice.toFixed(2)}</span>
+                                            <span>₹{totalPrice.toFixed(2)}</span>
                                         </div>
                                     </div>
 

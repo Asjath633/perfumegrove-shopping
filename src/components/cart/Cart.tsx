@@ -24,6 +24,11 @@ const Cart = () => {
 
     const [showCheckout, setShowCheckout] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [isFirstOrder, setIsFirstOrder] = useState(true);
+    const [discountCode, setDiscountCode] = useState("");
+    const [appliedCode, setAppliedCode] = useState("");
+    const [discountAmount, setDiscountAmount] = useState(0);
+    const [firstOrderCode] = useState("WELCOME20");
     const [formData, setFormData] = useState({
         customerName: "",
         phone: "",
@@ -34,7 +39,28 @@ const Cart = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        // Check if this is the first order
+        const hasOrdered = localStorage.getItem("hasOrdered");
+        const usedCode = localStorage.getItem("usedCode");
+        setIsFirstOrder(!hasOrdered);
+        if (usedCode) {
+            setAppliedCode(usedCode);
+        }
     }, []);
+
+    const handleApplyCode = () => {
+        if (discountCode.toUpperCase() === firstOrderCode && isFirstOrder && !appliedCode) {
+            const discount = Math.floor(totalPrice * 0.20); // 20% off
+            setDiscountAmount(discount);
+            setAppliedCode(discountCode.toUpperCase());
+            localStorage.setItem("usedCode", discountCode.toUpperCase());
+            toast.success("20% discount applied! 🎉");
+        } else if (appliedCode) {
+            toast.error("You've already used your discount code!");
+        } else {
+            toast.error("Invalid code or not eligible for first-time discount");
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -44,6 +70,11 @@ const Cart = () => {
             return;
         }
 
+        // Calculate final price with discount
+        const priceAfterDiscount = totalPrice - discountAmount;
+        const shippingCost = priceAfterDiscount >= 300 ? 0 : 0; // Free shipping always
+        const finalTotal = priceAfterDiscount + shippingCost;
+
         setLoading(true);
 
         try {
@@ -52,7 +83,11 @@ const Cart = () => {
                 body: JSON.stringify({
                     ...formData,
                     items,
-                    totalPrice
+                    totalPrice: priceAfterDiscount,
+                    discountCode: appliedCode || "NONE",
+                    discountAmount,
+                    shippingCost,
+                    finalTotal
                 }),
                 headers: {
                     "Content-Type": "text/plain;charset=utf-8"
@@ -62,10 +97,15 @@ const Cart = () => {
             const result = await response.json();
 
             if (result.result === "success") {
+                // Mark that order has been placed
+                localStorage.setItem("hasOrdered", "true");
                 toast.success("Order placed successfully! We'll contact you soon.");
                 clearCart();
                 setFormData({ customerName: "", phone: "", email: "", address: "", paymentType: "COD" });
                 setShowCheckout(false);
+                setDiscountCode("");
+                setAppliedCode("");
+                setDiscountAmount(0);
             } else {
                 throw new Error("Failed");
             }
@@ -119,7 +159,7 @@ const Cart = () => {
                                                             <h3 className="font-medium">{item.product.name}</h3>
                                                             <p className="text-sm text-warmgray">{item.product.size}</p>
                                                         </div>
-                                                        <p className="font-medium">${item.product.price}</p>
+                                                        <p className="font-medium">₹{item.product.price}</p>
                                                     </div>
 
                                                     <div className="flex items-center justify-between mt-4">
@@ -169,18 +209,60 @@ const Cart = () => {
                                     <div className="space-y-4 mb-6">
                                         <div className="flex justify-between">
                                             <span className="text-warmgray">Subtotal</span>
-                                            <span>${totalPrice.toFixed(2)}</span>
+                                            <span>₹{totalPrice.toFixed(2)}</span>
                                         </div>
+                                        
+                                        {/* Discount Code Section */}
+                                        {isFirstOrder && !appliedCode && (
+                                            <div className="bg-gold/10 p-4 rounded-md border border-gold/20">
+                                                <p className="text-sm font-medium text-gold mb-2">🎉 First Order Special!</p>
+                                                <p className="text-xs text-warmgray mb-3">Code: <span className="font-bold text-richblack">WELCOME20</span></p>
+                                                <div className="flex gap-2">
+                                                    <Input
+                                                        placeholder="Enter code"
+                                                        value={discountCode}
+                                                        onChange={(e) => setDiscountCode(e.target.value)}
+                                                        className="text-xs"
+                                                    />
+                                                    <Button
+                                                        onClick={handleApplyCode}
+                                                        className="bg-gold hover:bg-gold/90 text-white text-xs px-3"
+                                                    >
+                                                        Apply
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        )}
+                                        
+                                        {appliedCode && (
+                                            <div className="bg-green-50 p-3 rounded-md border border-green-200">
+                                                <p className="text-xs text-green-700 font-medium">✓ Discount Applied: {appliedCode}</p>
+                                                <p className="text-xs text-green-600">Save ₹{discountAmount.toFixed(2)}!</p>
+                                            </div>
+                                        )}
+                                        
+                                        {discountAmount > 0 && (
+                                            <div className="flex justify-between text-green-600 font-medium">
+                                                <span>Discount (20%)</span>
+                                                <span>-₹{discountAmount.toFixed(2)}</span>
+                                            </div>
+                                        )}
+                                        
                                         <div className="flex justify-between">
                                             <span className="text-warmgray">Shipping</span>
-                                            <span>Free</span>
+                                            <div className="text-right">
+                                                <span>Free</span>
+                                                {isFirstOrder && (
+                                                    <p className="text-xs text-gold font-medium">First Order!</p>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div className="border-t pt-4 mb-6">
                                         <div className="flex justify-between font-medium text-lg">
                                             <span>Total</span>
-                                            <span>${totalPrice.toFixed(2)}</span>
+                                            <span>₹{(totalPrice - discountAmount).toFixed(2)}</span>
                                         </div>
                                     </div>
 

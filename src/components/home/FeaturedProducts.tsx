@@ -41,8 +41,7 @@ const FeaturedProducts = () => {
           <p className="subtle-text mb-3">Discover</p>
           <h2 className="h2 mb-4">Featured Collections</h2>
           <p className="text-warmgray max-w-2xl mx-auto">
-            Explore our most beloved attars, each carefully crafted to evoke emotion and memory
-            through the ancient art of natural perfumery.
+            Explore our premium collections of handcrafted attars and elite smartphone accessories, each selected for its exceptional quality and craftsmanship.
           </p>
         </div>
 

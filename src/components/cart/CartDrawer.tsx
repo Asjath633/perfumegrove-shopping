@@ -13,8 +13,14 @@ const CartDrawer = () => {
     totalItems,
     totalPrice
   } = useCart();
+  
+  const [isFirstOrder, setIsFirstOrder] = React.useState(true);
 
   React.useEffect(() => {
+    // Check if this is the first order
+    const hasOrdered = localStorage.getItem("hasOrdered");
+    setIsFirstOrder(!hasOrdered);
+    
     if (isCartOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -69,7 +75,7 @@ const CartDrawer = () => {
                         </button>
                       </div>
                       <p className="text-sm text-warmgray">{item.product.size}</p>
-                      <p className="mt-1">${item.product.price}</p>
+                      <p className="mt-1">₹{item.product.price}</p>
                       <div className="flex items-center mt-3">
                         <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="p-1 border rounded-md hover:bg-gray-100">
                           <Minus size={14} />
@@ -89,13 +95,28 @@ const CartDrawer = () => {
           <div className="p-6 border-t">
             {items.length > 0 && (
               <>
-                <div className="flex justify-between mb-4">
-                  <span>Subtotal</span>
-                  <span>${totalPrice.toFixed(2)}</span>
+                <div className="space-y-3 mb-4">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-warmgray">Subtotal</span>
+                    <span>₹{totalPrice.toFixed(2)}</span>
+                  </div>
+                  
+                  <div className="flex justify-between text-sm">
+                    <span className="text-warmgray">Shipping</span>
+                    <div className="text-right">
+                      <span>Free</span>
+                      {isFirstOrder && (
+                        <p className="text-xs text-gold font-medium">First Order!</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between mb-6 font-medium">
-                  <span>Shipping</span>
-                  <span>Free</span>
+                
+                <div className="border-t pt-3 mb-4">
+                  <div className="flex justify-between font-medium">
+                    <span>Total</span>
+                    <span>₹{totalPrice.toFixed(2)}</span>
+                  </div>
                 </div>
 
                 {/* ✅ FIXED LINK HERE */}
