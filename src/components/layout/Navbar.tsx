@@ -36,9 +36,8 @@ const Navbar = () => {
     >
       <div className="page-container">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="text-xl font-light tracking-widest transition-opacity hover:opacity-80">
-            ZANDRO
+          <Link to="/" className="transition-opacity hover:opacity-80">
+            <img src="/logo.png" alt="ZANDRO" className="h-8 auto" />
           </Link>
 
           {/* Desktop Navigation */}
