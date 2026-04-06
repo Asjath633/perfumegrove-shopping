@@ -227,7 +227,13 @@ app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', message: 'Auth server is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Auth server running on http://localhost:${PORT}`);
-  console.log('Make sure to set up your Google Sheets credentials and environment variables');
-});
+// Export for Vercel Serverless Functions
+export default app;
+
+// Listen only when not in a serverless environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Auth server running on http://localhost:${PORT}`);
+    console.log('Make sure to set up your Google Sheets credentials and environment variables');
+  });
+}
