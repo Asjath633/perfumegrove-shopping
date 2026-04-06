@@ -98,10 +98,9 @@ const Signup = () => {
       <div className="max-w-md w-full space-y-8 bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-gold/20 relative z-10 animate-fade-in">
         {/* Logo */}
         <div className="text-center">
-          <Link to="/" className="text-4xl font-light tracking-[0.2em] text-richblack hover:text-gold transition-all duration-500 block mb-2">
-            ZANDRO
+          <Link to="/" className="block mb-6 transition-opacity hover:opacity-80">
+            <img src="/zandro_logo.png" alt="ZANDRO" className="h-14 mx-auto" />
           </Link>
-          <div className="h-0.5 w-12 bg-gold mx-auto mb-6"></div>
           <p className="text-warmgray font-medium uppercase tracking-widest text-xs">Create your account</p>
         </div>
 
