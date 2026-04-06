@@ -66,9 +66,10 @@ const Login = () => {
       <div className="max-w-md w-full space-y-8 bg-white/95 backdrop-blur-md p-10 rounded-2xl shadow-2xl border border-gold/20 relative z-10 animate-fade-in">
         {/* Logo */}
         <div className="text-center">
-          <Link to="/" className="block mb-6 transition-opacity hover:opacity-80">
-            <img src="/logo.png" alt="ZANDRO" className="h-12 mx-auto" />
+          <Link to="/" className="text-4xl font-light tracking-[0.2em] text-richblack hover:text-gold transition-all duration-500 block mb-2">
+            ZANDRO
           </Link>
+          <div className="h-0.5 w-12 bg-gold mx-auto mb-6"></div>
           <p className="text-warmgray font-medium uppercase tracking-widest text-xs">Sign in to your account</p>
         </div>
 
