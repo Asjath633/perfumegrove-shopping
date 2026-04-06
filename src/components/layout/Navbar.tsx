@@ -51,7 +51,7 @@ const Navbar = () => {
           {/* Right Section - Icons */}
           <div className="flex items-center space-x-2">
             {/* Request Icon Button */}
-            <Link 
+            <Link
               to="/request"
               className="relative p-2 hover:text-gold transition-colors"
               aria-label="Request a product"
@@ -60,7 +60,7 @@ const Navbar = () => {
             </Link>
 
             {/* Cart Button */}
-            <button 
+            <button
               onClick={openCart}
               className="relative p-2 hover:text-gold transition-colors"
               aria-label="Open shopping cart"
@@ -74,7 +74,7 @@ const Navbar = () => {
             </button>
 
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               className="ml-2 p-2 md:hidden hover:text-gold transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -86,42 +86,42 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div 
+      <div
         className={cn(
           "fixed inset-0 bg-richblack/95 z-40 flex flex-col pt-32 pb-8 px-6 transition-all duration-500 ease-apple md:hidden",
           isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         )}
       >
         <div className="flex flex-col space-y-8 text-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="text-2xl font-light tracking-[0.2em] text-white hover:text-gold transition-colors opacity-90"
           >
             HOME
           </Link>
-          <Link 
-            to="/perfumes" 
+          <Link
+            to="/perfumes"
             className="text-2xl font-light tracking-[0.2em] text-white hover:text-gold transition-colors opacity-90"
           >
             PERFUMES
           </Link>
-          <Link 
-            to="/accessories" 
+          <Link
+            to="/accessories"
             className="text-2xl font-light tracking-[0.2em] text-white hover:text-gold transition-colors opacity-90"
           >
             ACCESSORIES
           </Link>
-          <Link 
-            to="/request" 
+          <Link
+            to="/request"
             className="text-2xl font-light tracking-[0.2em] text-white hover:text-gold transition-colors opacity-90 pt-8 border-t border-white/10"
           >
             REQUEST A PRODUCT
           </Link>
         </div>
-        
+
         {/* Footer info in mobile menu */}
         <div className="mt-auto text-center border-t border-white/10 pt-8">
-            <p className="text-white/40 text-xs tracking-widest uppercase">© 2026 ZANDRO LUXURY</p>
+          <p className="text-white/40 text-xs tracking-widest uppercase">© 2026 ZANDRO LUXURY</p>
         </div>
       </div>
     </header>
