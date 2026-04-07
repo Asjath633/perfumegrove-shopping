@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -13,6 +13,7 @@ import { toast } from "sonner";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEkbGQ0kI-71I1JnlsZ2o6Oq_F_3qlrf2SvDBxrcWevfu_6jbm6jzOpnBUkY7ZB2Uv/exec";
 
 const Cart = () => {
+    const navigate = useNavigate();
     const {
         items,
         removeFromCart,
@@ -68,10 +69,29 @@ const Cart = () => {
             if (result.result === "success") {
                 // Mark that order has been placed
                 localStorage.setItem("hasOrdered", "true");
+                
+                // Save order to history
+                const newOrder = {
+                    id: `ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
+                    items: [...items],
+                    totalPrice,
+                    date: new Date().toISOString(),
+                    status: 'processing',
+                    customerDetails: {
+                        name: formData.customerName,
+                        phone: formData.phone,
+                        address: formData.address
+                    }
+                };
+                
+                const existingOrders = JSON.parse(localStorage.getItem("pastOrders") || "[]");
+                localStorage.setItem("pastOrders", JSON.stringify([newOrder, ...existingOrders]));
+
                 toast.success("Order placed successfully! We'll contact you soon.");
                 clearCart();
                 setFormData({ customerName: "", phone: "", email: "", address: "", paymentType: "COD" });
                 setShowCheckout(false);
+                navigate("/orders");
             } else {
                 throw new Error("Failed");
             }

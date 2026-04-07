@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, Menu, X, PackageSearch } from "lucide-react";
+import { ShoppingBag, Menu, X, PackageSearch, Package } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 
@@ -46,10 +46,20 @@ const Navbar = () => {
             <Link to="/" className="nav-link text-sm uppercase tracking-widest font-medium">Home</Link>
             <Link to="/perfumes" className="nav-link text-sm uppercase tracking-widest font-medium">Perfumes</Link>
             <Link to="/accessories" className="nav-link text-sm uppercase tracking-widest font-medium">Accessories</Link>
+            <Link to="/orders" className="nav-link text-sm uppercase tracking-widest font-medium text-gold font-bold">My Orders</Link>
           </div>
 
           {/* Right Section - Icons */}
           <div className="flex items-center space-x-2">
+            {/* Orders Icon Button */}
+            <Link
+              to="/orders"
+              className="relative p-2 hover:text-gold transition-colors hidden sm:block"
+              aria-label="My orders"
+            >
+              <Package size={22} />
+            </Link>
+
             {/* Request Icon Button */}
             <Link
               to="/request"
@@ -110,6 +120,12 @@ const Navbar = () => {
             className="text-2xl font-light tracking-[0.2em] text-white hover:text-gold transition-colors opacity-90"
           >
             ACCESSORIES
+          </Link>
+          <Link
+            to="/orders"
+            className="text-2xl font-light tracking-[0.2em] text-gold hover:text-gold transition-colors opacity-90"
+          >
+            MY ORDERS
           </Link>
           <Link
             to="/request"
