@@ -132,23 +132,16 @@ const Navbar = () => {
               </span>
             </Link>
 
-            <Link to="/orders" className="relative group p-2 text-[#F5F5DC]/60 hover:text-[#C9A84C] transition-all duration-300">
-              <Package size={20} className="sm:w-6 sm:h-6" />
+            <Link to="/orders" className="relative group p-1 sm:p-2 text-[#F5F5DC]/60 hover:text-[#C9A84C] transition-all duration-300">
+              <Package size={18} className="sm:w-6 sm:h-6" />
               <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-[#C9A84C] text-black text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest hidden sm:block">
                 Orders
               </span>
             </Link>
 
-            <Link to="/request" className="relative group p-2 text-[#F5F5DC]/60 hover:text-[#C9A84C] transition-all duration-300">
-              <MessageSquareMore size={20} className="sm:w-6 sm:h-6" />
-              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-[#C9A84C] text-black text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest hidden sm:block">
-                Request
-              </span>
-            </Link>
-
             <button
               onClick={openCart}
-              className="relative group ml-1 px-3 py-1.5 sm:px-6 sm:py-2.5 bg-white text-black rounded-full hover:bg-[#C9A84C] transition-all duration-500 shadow-xl"
+              className="relative group ml-1 p-2 sm:px-6 sm:py-2.5 bg-white text-black rounded-full hover:bg-[#C9A84C] transition-all duration-500 shadow-xl"
             >
               <div className="flex items-center gap-2">
                 <ShoppingBag size={14} strokeWidth={2.5} />
