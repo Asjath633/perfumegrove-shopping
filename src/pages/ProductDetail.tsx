@@ -278,7 +278,7 @@ const ProductDetail = () => {
                  <h2 className="text-2xl font-serif font-black tracking-tight uppercase">You May Also <span className="text-[#C9A84C]">Favor</span></h2>
                  <Link to="/perfumes" className="text-[#C9A84C] text-[9px] font-black tracking-widest uppercase border-b border-[#C9A84C]/20 pb-1">View Collection</Link>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                 {relatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
