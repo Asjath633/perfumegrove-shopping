@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -5,7 +6,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { PackageSearch } from "lucide-react";
+import { PackageSearch, MessageCircle } from "lucide-react";
 
 const RequestProduct = () => {
     const [formData, setFormData] = useState({
@@ -26,7 +27,6 @@ const RequestProduct = () => {
             return;
         }
 
-        // WhatsApp Phone Number (India code 91 + the number from your sheet)
         const YOUR_WHATSAPP_NUMBER = "919842083220"; 
 
         const message = `*NEW PRODUCT REQUEST*
@@ -38,8 +38,6 @@ const RequestProduct = () => {
 ${formData.productDetails}`;
 
         const encodedMessage = encodeURIComponent(message);
-        
-        // Open WhatsApp in a new tab
         window.open(`https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodedMessage}`, "_blank");
 
         toast.success("Opening WhatsApp...");
@@ -47,46 +45,52 @@ ${formData.productDetails}`;
     };
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-[#0B0B0B] text-[#F5F5DC]">
             <Navbar />
-            <main className="flex-1 pt-24 pb-20">
-                <div className="page-container max-w-2xl mx-auto">
-                    <div className="text-center mb-10">
-                        <PackageSearch size={48} className="mx-auto text-gold mb-4" />
-                        <h1 className="h2 mb-4">Request a Product</h1>
-                        <p className="text-warmgray">
-                            Can't find the exact perfume or accessory you're looking for? 
-                            Let us know what you need, and we'll do our best to stock it for you!
+            <main className="flex-1 pt-32 pb-24 px-6 lg:px-12">
+                <div className="max-w-2xl mx-auto">
+                    
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center justify-center w-20 h-20 bg-[#C9A84C]/10 rounded-full mb-8">
+                           <PackageSearch size={36} className="text-[#C9A84C]" />
+                        </div>
+                        <h1 className="text-5xl md:text-6xl font-serif font-black uppercase tracking-tight mb-6">Request a Product</h1>
+                        <p className="text-[10px] uppercase tracking-[0.5em] text-white/30 font-black">
+                            Can't find the exact perfume or accessory? Let us know.
                         </p>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-sm p-8">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div>
-                                <label className="block text-sm font-medium mb-2">Your Name</label>
-                                <Input
+                    <div className="bg-white/[0.03] rounded-[2.5rem] border border-white/5 p-10 md:p-12 backdrop-blur-xl">
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                            
+                            <div className="space-y-4">
+                                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#C9A84C]">Your Name</label>
+                                <input
+                                    type="text"
                                     placeholder="Enter your name"
+                                    className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-5 px-6 text-sm focus:outline-none focus:border-[#C9A84C] transition-all text-white placeholder-white/20"
                                     value={formData.customerName}
                                     onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
                                     required
                                 />
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-medium mb-2">Phone Number</label>
-                                <Input
-                                    placeholder="Enter your phone number"
+                            <div className="space-y-4">
+                                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#C9A84C]">Phone Number</label>
+                                <input
                                     type="tel"
+                                    placeholder="Enter your phone number"
+                                    className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-5 px-6 text-sm focus:outline-none focus:border-[#C9A84C] transition-all text-white placeholder-white/20"
                                     value={formData.phone}
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     required
                                 />
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-medium mb-2">What product are you looking for?</label>
+                            <div className="space-y-4">
+                                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#C9A84C]">What are you looking for?</label>
                                 <textarea
-                                    className="w-full min-h-[120px] p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/50"
+                                    className="w-full min-h-[160px] bg-white/[0.02] border border-white/10 rounded-[2rem] py-5 px-6 text-sm focus:outline-none focus:border-[#C9A84C] transition-all text-white placeholder-white/20 resize-none"
                                     placeholder="e.g. iPhone 15 Pro Max Privacy Screen Protector, or Dior Sauvage 100ml..."
                                     value={formData.productDetails}
                                     onChange={(e) => setFormData({ ...formData, productDetails: e.target.value })}
@@ -94,14 +98,22 @@ ${formData.productDetails}`;
                                 />
                             </div>
 
-                            <Button
+                            <button
                                 type="submit"
-                                className="w-full bg-green-500 hover:bg-green-600 text-white py-6 flex items-center justify-center font-medium"
+                                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-6 rounded-full flex items-center justify-center gap-4 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 shadow-xl shadow-green-500/10"
                             >
+                                <MessageCircle size={20} />
                                 Send Request via WhatsApp
-                            </Button>
+                            </button>
                         </form>
                     </div>
+
+                    <div className="mt-12 text-center">
+                       <p className="text-[9px] uppercase tracking-[0.4em] text-white/10 font-bold">
+                          We will verify and contact you within 24 hours
+                       </p>
+                    </div>
+
                 </div>
             </main>
             <Footer />

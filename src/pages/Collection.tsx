@@ -18,21 +18,21 @@ const Collection = ({ department = "perfume" }: CollectionProps) => {
   const displayProducts = getProductsByDepartment(department);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#0B0B0B]">
       <Navbar />
-      <main className="flex-1 pt-24 pb-20">
-        <div className="page-container">
-          <div className="text-center mb-12">
-            <h1 className="h1 mb-4">
+      <main className="flex-1 pt-12 sm:pt-20 pb-8 sm:pb-12">
+        <div className="page-container px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-1 sm:mb-4">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif font-black text-white mb-1">
               {department === "perfume" ? "Our Perfumes" : "Phone Accessories"}
             </h1>
-            <p className="text-warmgray max-w-2xl mx-auto">
-              {department === "perfume" 
+            <p className="text-warmgray text-[10px] sm:text-base max-w-2xl mx-auto uppercase tracking-[0.2em] sm:tracking-normal opacity-60 sm:opacity-100 hidden sm:block">
+              {department === "perfume"
                 ? "Explore our complete collection of handcrafted attars, each telling its own unique olfactory story."
                 : "Premium accessories to protect and style your phone."}
             </p>
           </div>
-          
+
           <ProductGrid products={displayProducts} />
         </div>
       </main>

@@ -117,6 +117,7 @@ export default {
 			fontFamily: {
 				sans: ['SF Pro Display', 'Inter', 'sans-serif'],
 				serif: ['Playfair Display', 'serif'],
+				brand: ['Cinzel', 'serif'],
 			},
 			transitionTimingFunction: {
 				'apple': 'cubic-bezier(0.25, 1, 0.5, 1)',

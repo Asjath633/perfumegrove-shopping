@@ -1,102 +1,79 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone, Instagram, Facebook, Twitter } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Mail, MapPin, Phone, Send } from "lucide-react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-richblack text-white pt-16 pb-8">
-      <div className="page-container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Brand Column */}
-          <div className="md:col-span-1">
-            <Link to="/" className="text-xl font-light tracking-widest">
-              ZANDRO
+    <footer className="bg-[#0B0B0B] border-t border-white/5 pt-24 pb-12 px-6 lg:px-12 font-sans">
+      <div className="max-w-[1700px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-24">
+
+          {/* Brand & Newsletter (Left) */}
+          <div className="lg:col-span-5">
+            <Link to="/" className="flex flex-col mb-8 group">
+              <span className="font-brand text-3xl font-black tracking-[0.25em] text-[#F5F5DC] group-hover:text-[#C9A84C] transition-all duration-500 leading-none">
+                ZANDRO
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.5em] text-[#C9A84C] font-semibold mt-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                Luxury Attars
+              </span>
             </Link>
-            <p className="mt-4 text-white/70 text-sm leading-relaxed">
-              Handcrafted natural attars capturing the essence of traditional perfumery with modern elegance.
+            <p className="text-[#F5F5DC]/40 text-sm leading-relaxed mb-10 max-w-sm">
+              Authentic Arabian heritage captured in every drop. Our natural attars are alcohol-free and meticulously crafted for longevity.
             </p>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-sm tracking-wider uppercase mb-4 text-gold">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/perfumes" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Perfumes
-                </Link>
-              </li>
-              <li>
-                <Link to="/accessories" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Accessories
-                </Link>
-              </li>
-              <li>
-                <Link to="/request" className="text-white/70 text-sm hover:text-gold transition-colors">
-                  Request a Product
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-sm tracking-wider uppercase mb-4 text-gold">Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin size={16} className="mr-2 mt-0.5 text-gold" />
-                <span className="text-white/70 text-sm">Kangeyam Road, Tiruppur, Tamil Nadu</span>
-              </li>
-              <li className="flex items-center">
-                <Phone size={16} className="mr-2 text-gold" />
-                <span className="text-white/70 text-sm">+91 98420 83220</span>
-              </li>
-              <li className="flex items-center">
-                <Mail size={16} className="mr-2 text-gold" />
-                <span className="text-white/70 text-sm">007.ZANDRO@gmail.com</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social & Newsletter */}
-          <div>
-            <h3 className="text-sm tracking-wider uppercase mb-4 text-gold">Follow Us</h3>
-            <div className="flex space-x-4 mb-6">
-              <a
-                href="https://www.instagram.com/zandro_007/"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-white/10 p-2 rounded-full hover:bg-gold/20 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={16} />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61575429866308"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-white/10 p-2 rounded-full hover:bg-gold/20 transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={16} />
-              </a>
+            {/* Social Icons */}
+            <div className="flex items-center gap-6 pt-4">
+              {[
+                { icon: <Instagram size={20} />, link: "https://www.instagram.com/zandro_007/" },
+                { icon: <Facebook size={20} />, link: "https://www.facebook.com/profile.php?id=61575429866308" }
+              ].map((social, i) => (
+                <a key={i} href={social.link} target="_blank" rel="noopener noreferrer" className="text-[#C9A84C] hover:text-white transition-all duration-300">
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
+
+          {/* Quick Links Column 1 */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[11px] uppercase tracking-[0.3em] font-bold text-[#C9A84C] mb-8">Navigation</h4>
+            <ul className="flex flex-col gap-5">
+              {["Home", "Perfumes", "Accessories"].map(link => (
+                <li key={link}>
+                  <Link to={link === "Home" ? "/" : `/${link.toLowerCase()}`} className="text-[#F5F5DC]/40 hover:text-[#C9A84C] text-xs font-bold tracking-[0.2em] transition-all uppercase">
+                    {link}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+
+
+
+
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="border-t border-white/10 mt-10 pt-6 text-center">
-          <p className="text-white/50 text-xs">
-            © {currentYear} Zandro. All rights reserved.
-          </p>
+        {/* repeated logo and legal bottom */}
+        <div className="pt-16 border-t border-white/5 flex flex-col items-center gap-12">
+          <div className="flex flex-col items-center opacity-20 hover:opacity-100 transition-opacity duration-1000">
+            <span className="font-brand text-3xl sm:text-5xl font-black tracking-[0.5em] text-[#F5F5DC]">
+              ZANDRO
+            </span>
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.5em] sm:tracking-[1em] text-[#C9A84C] mt-4 font-bold">Luxury Attars Worldwide</span>
+          </div>
+
+          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-[#F5F5DC]/20 text-[9px] uppercase tracking-[0.4em] font-black">
+              © 2026 ZANDRO LUXURY ATYARS • PRIVATE COLLECTION
+            </p>
+            <div className="flex items-center gap-10">
+              <span className="text-[#F5F5DC]/10 text-[8px] uppercase tracking-[0.5em] font-black">Purity Guaranteed</span>
+              <span className="text-[#F5F5DC]/10 text-[8px] uppercase tracking-[0.5em] font-black">Ethically Sourced</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

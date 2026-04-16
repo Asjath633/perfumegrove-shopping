@@ -7,6 +7,7 @@ export interface Product {
   image: string;
   category: string;
   featured: boolean;
+  isBestSeller?: boolean;
   notes: string[];
   size: string;
   stock: number;
@@ -26,9 +27,9 @@ export const products: Product[] = [
     id: "attar-1",
     name: "Amber",
     description: "A rich and deep fragrance with captivating notes of pure musk, ambergris, and sandalwood.",
-    price: 200,
+    price: 300,
     image: "/products/Attar/Amber.png",
-    category: "Medium",
+    category: "Oud",
     featured: true,
     notes: ["Oud, Musk, Dark Vanilla"],
     size: "6ml",
@@ -42,9 +43,9 @@ export const products: Product[] = [
     id: "attar-2",
     name: "Ameerul oud",
     description: "Delicate and floral, this attar captures the essence of premium Taif roses with subtle hints of jasmine.",
-    price: 200,
+    price: 250,
     image: "/products/Attar/Ameerul oud.png",
-    category: "Premium",
+    category: "Oud",
     featured: true,
     notes: ["Simple, cozy, warm, floral"],
     size: "6ml",
@@ -58,7 +59,7 @@ export const products: Product[] = [
     id: "attar-3",
     name: "Jannatul Firdaus",
     description: "A majestic blend of premium agarwood, saffron, and amber creating a luxurious and long-lasting fragrance.",
-    price: 200,
+    price: 280,
     image: "/products/Attar/Jannatul Firdous.png",
     category: "Premium",
     featured: true,
@@ -74,9 +75,9 @@ export const products: Product[] = [
     id: "attar-4",
     name: "juwan Musk",
     description: "Warm and mysterious amber infused with exotic spices and a touch of vanilla for a comforting experience.",
-    price: 200,
+    price: 280,
     image: "/products/Attar/Juwan Musk.png",
-    category: "Medium",
+    category: "Musk",
     featured: false,
     notes: ["clean, skin-scent,Earthy,Warm, slightly sweet, musky"],
     size: "6ml",
@@ -92,7 +93,7 @@ export const products: Product[] = [
     description: "Pure jasmine flowers collected at dusk and distilled to capture their intoxicating and dreamy essence.",
     price: 200,
     image: "/products/Attar/Midnight oud.png",
-    category: "Mild",
+    category: "Oud",
     featured: true,
     notes: ["Classic Middle Eastern floral,Smoky-sweet, creamy drydown,warm"],
 
@@ -107,7 +108,7 @@ export const products: Product[] = [
     id: "attar-6",
     name: "Mukallat Dubai",
     description: "A grounding blend of vetiver root, patchouli, and cedarwood for a natural and earthy fragrance.",
-    price: 200,
+    price: 260,
     image: "/products/Attar/Mukallat Dubai.png",
     category: "Medium",
     featured: false,
@@ -123,9 +124,9 @@ export const products: Product[] = [
     id: "attar-7",
     name: "Musk rijali",
     description: "Luxurious saffron blended with Damascus rose and subtle oud for an opulent and refined scent.",
-    price: 200,
+    price: 300,
     image: "/products/Attar/Musk rijali.png",
-    category: "Premium",
+    category: "Musk",
     featured: false,
     notes: ["Creamy", "woody", "resinous sweetness", "Floral", "rosy", "slightly fruity", "warm", "musky"],
     size: "6ml",
@@ -141,7 +142,7 @@ export const products: Product[] = [
     description: "A dark and sophisticated musk with leather accords and smoky vanilla for a modern interpretation.",
     price: 200,
     image: "/products/Attar/Musk.png",
-    category: "Mild",
+    category: "Musk",
     featured: false,
     notes: ["Smoky vanilla"],
     size: "6ml",
@@ -149,6 +150,298 @@ export const products: Product[] = [
     sizes: [
       { size: "3ml", price: 100, stock: 19, image: "/products/Attar/3ml bottle.png" },
       { size: "6ml", price: 200, stock: 11, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-9",
+    name: "White Oud",
+    description: "A pristine and luminous oud with soft floral undertones and a clean, powdery finish — elegant and timeless.",
+    price: 280,
+    image: "/products/Attar/White oud.png",
+    category: "Oud",
+    featured: true,
+    isBestSeller: true,
+    notes: ["Clean", "Powdery", "Soft Floral", "Warm Oud"],
+    size: "6ml",
+    stock: 14,
+    sizes: [
+      { size: "3ml", price: 100, stock: 20, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 14, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-10",
+    name: "CR7",
+    description: "A bold and energetic fragrance inspired by the legendary champion — fresh citrus top notes with a powerful woody base.",
+    price: 350,
+    image: "/products/Attar/CR7.png",
+    category: "Medium",
+    featured: true,
+    isBestSeller: true,
+    notes: ["Citrus", "Woody", "Fresh", "Sporty"],
+    size: "6ml",
+    stock: 15,
+    sizes: [
+      { size: "3ml", price: 100, stock: 20, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 15, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-11",
+    name: "Dunhill",
+    description: "A classic and refined masculine scent — sophisticated spices and warm woods for the discerning gentleman.",
+    price: 250,
+    image: "/products/Attar/Dunhill.png",
+    category: "Premium",
+    featured: false,
+    isBestSeller: true,
+    notes: ["Spicy", "Warm Wood", "Leather", "Refined"],
+    size: "6ml",
+    stock: 12,
+    sizes: [
+      { size: "3ml", price: 100, stock: 18, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 12, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-12",
+    name: "Blue Moon",
+    description: "A cool and ethereal fragrance with aquatic freshness and a soft musky heart — as calming as moonlight.",
+    price: 280,
+    image: "/products/Attar/Blue Moon.png",
+    category: "Mild",
+    featured: true,
+    notes: ["Aquatic", "Fresh", "Soft Musk", "Cool"],
+    size: "6ml",
+    stock: 14,
+    sizes: [
+      { size: "3ml", price: 100, stock: 20, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 14, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-13",
+    name: "Fantasia",
+    description: "A dreamy and enchanting floral blend with hints of vanilla and sweet berries — a magical feminine scent.",
+    price: 200,
+    image: "/products/Attar/Fantasia.png",
+    category: "Mild",
+    featured: false,
+    notes: ["Floral", "Vanilla", "Sweet Berry", "Dreamy"],
+    size: "6ml",
+    stock: 13,
+    sizes: [
+      { size: "3ml", price: 100, stock: 22, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 13, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-14",
+    name: "Majmua 96",
+    description: "A timeless traditional Indian attar blend — earthy florals, rich roots, and warm resins in perfect harmony.",
+    price: 300,
+    image: "/products/Attar/Majmua 96.png",
+    category: "Premium",
+    featured: true,
+    notes: ["Earthy Floral", "Resinous", "Traditional", "Warm"],
+    size: "6ml",
+    stock: 10,
+    sizes: [
+      { size: "3ml", price: 100, stock: 18, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 10, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-15",
+    name: "Kasturi",
+    description: "Pure and natural kasturi musk — a soft, warm, and deeply personal scent that lingers close to the skin.",
+    price: 320,
+    image: "/products/Attar/Kasturi.png",
+    category: "Mild",
+    featured: false,
+    notes: ["Natural Musk", "Soft", "Warm", "Skin Scent"],
+    size: "6ml",
+    stock: 11,
+    sizes: [
+      { size: "3ml", price: 100, stock: 19, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 11, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-16",
+    name: "Fogg",
+    description: "A popular and long-lasting everyday fragrance — fresh, clean, and uplifting for all-day confidence.",
+    price: 200,
+    image: "/products/Attar/Fogg.png",
+    category: "Medium",
+    featured: false,
+    notes: ["Fresh", "Clean", "Light Woody", "Uplifting"],
+    size: "6ml",
+    stock: 16,
+    sizes: [
+      { size: "3ml", price: 100, stock: 25, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 16, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-17",
+    name: "Mody Oud",
+    description: "A rich and smoky oud with modern character — deep resinous notes meet a smooth, contemporary finish.",
+    price: 350,
+    image: "/products/Attar/Mody Oud.png",
+    category: "Oud",
+    featured: true,
+    notes: ["Smoky Oud", "Resinous", "Deep", "Modern"],
+    size: "6ml",
+    stock: 9,
+    sizes: [
+      { size: "3ml", price: 100, stock: 15, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 9, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-18",
+    name: "Dove",
+    description: "A gentle and soothing fragrance — soft powdery notes with a clean, comforting warmth reminiscent of pure serenity.",
+    price: 200,
+    image: "/products/Attar/Dove.png",
+    category: "Mild",
+    featured: false,
+    notes: ["Powdery", "Clean", "Soft", "Comforting"],
+    size: "6ml",
+    stock: 14,
+    sizes: [
+      { size: "3ml", price: 100, stock: 22, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 14, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-19",
+    name: "Cobra",
+    description: "A bold and daring scent — sharp green spices, dark woods, and an intense base for the fearless.",
+    price: 200,
+    image: "/products/Attar/Cobra.png",
+    category: "Medium",
+    featured: false,
+    notes: ["Spicy Green", "Dark Wood", "Bold", "Intense"],
+    size: "6ml",
+    stock: 12,
+    sizes: [
+      { size: "3ml", price: 100, stock: 20, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 12, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-20",
+    name: "Fancy Bouquet",
+    description: "A luxurious floral bouquet — a vibrant mix of rose, jasmine, and lily with a soft musky drydown.",
+    price: 200,
+    image: "/products/Attar/Fancy Bouquet.png",
+    category: "Mild",
+    featured: true,
+    notes: ["Rose", "Jasmine", "Lily", "Soft Musk"],
+    size: "6ml",
+    stock: 13,
+    sizes: [
+      { size: "3ml", price: 100, stock: 20, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 13, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-21",
+    name: "Arabian Night",
+    description: "A mysterious and opulent oriental blend — dark oud, exotic spices, and amber evoking starlit desert nights.",
+    price: 250,
+    image: "/products/Attar/Arabian Night.png",
+    category: "Premium",
+    featured: true,
+    notes: ["Dark Oud", "Exotic Spice", "Amber", "Oriental"],
+    size: "6ml",
+    stock: 8,
+    sizes: [
+      { size: "3ml", price: 100, stock: 15, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 8, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-22",
+    name: "Chocolate Musk",
+    description: "A sweet and seductive gourmand fragrance — rich dark chocolate wrapped in a warm, skin-hugging musk.",
+    price: 200,
+    image: "/products/Attar/Chocolate Musk.png",
+    category: "Mild",
+    featured: false,
+    notes: ["Dark Chocolate", "Sweet Musk", "Warm", "Gourmand"],
+    size: "6ml",
+    stock: 15,
+    sizes: [
+      { size: "3ml", price: 100, stock: 22, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 15, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-23",
+    name: "Mukhalat Seeka",
+    description: "A complex and layered oriental blend — precious oud, rose, and exotic resins creating a majestic signature.",
+    price: 300,
+    image: "/products/Attar/Mukhalat Seeka.png",
+    category: "Premium",
+    featured: false,
+    notes: ["Oud", "Rose", "Exotic Resin", "Layered"],
+    size: "6ml",
+    stock: 7,
+    sizes: [
+      { size: "3ml", price: 100, stock: 14, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 7, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-24",
+    name: "Sandalwood",
+    description: "Pure and creamy Indian sandalwood attar — smooth, milky warmth with a deep earthy sweetness that never fades.",
+    price: 250,
+    image: "/products/Attar/Sandalwood.png",
+    category: "Medium",
+    featured: true,
+    notes: ["Creamy Sandalwood", "Earthy", "Warm", "Smooth"],
+    size: "6ml",
+    stock: 16,
+    sizes: [
+      { size: "3ml", price: 100, stock: 24, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 16, image: "/products/Attar/6ml bottle.png" }
+    ]
+  },
+
+  {
+    id: "attar-25",
+    name: "Jasmine",
+    description: "Fresh and intoxicating jasmine attar — pure white florals with a honeyed softness, radiant and captivating.",
+    price: 200,
+    image: "/products/Attar/Jasmine.png",
+    category: "Mild",
+    featured: true,
+    notes: ["White Jasmine", "Honey", "Fresh Floral", "Radiant"],
+    size: "6ml",
+    stock: 18,
+    sizes: [
+      { size: "3ml", price: 100, stock: 25, image: "/products/Attar/3ml bottle.png" },
+      { size: "6ml", price: 200, stock: 18, image: "/products/Attar/6ml bottle.png" }
     ]
   },
 
@@ -231,7 +524,7 @@ export const products: Product[] = [
     size: "Pure White",
     stock: 150
   },
-  
+
   {
     id: "acc-6",
     name: "MZ Portable Soundbar with Mic",
@@ -244,7 +537,7 @@ export const products: Product[] = [
     notes: ["Compact Soundbar", "Single Karaoke Mic", "TF Card Support"],
     size: "One Size",
     stock: 40
-  },    
+  },
   {
     id: "acc-7",
     name: "Mobile battery",
@@ -254,13 +547,13 @@ export const products: Product[] = [
     category: "Android Accessories",
     department: "accessory",
     featured: true,
-    notes: ["High Capacity", "Fast Charging", "Universal Compatibility"], 
+    notes: ["High Capacity", "Fast Charging", "Universal Compatibility"],
     size: "",
     warranty: "One Year",
     stock: 40
   }
 
-  
+
 ];
 
 export const getProductById = (id: string): Product | undefined => {
@@ -269,6 +562,10 @@ export const getProductById = (id: string): Product | undefined => {
 
 export const getFeaturedProducts = (): Product[] => {
   return products.filter(product => product.featured);
+};
+
+export const getBestSellers = (): Product[] => {
+  return products.filter(product => product.isBestSeller);
 };
 
 export const getProductsByCategory = (category: string): Product[] => {
@@ -289,7 +586,7 @@ export const getSizeImage = (product: Product, size: string): string => {
   if (!size) {
     return product.image;
   }
-  
+
   if (product.sizes) {
     const sizeObj = product.sizes.find(s => s.size === size);
     if (sizeObj && sizeObj.image) {
